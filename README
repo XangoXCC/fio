@@ -178,6 +178,12 @@ How to compile fio on 64-bit Windows:
  2. Open the Cygwin Terminal.
  3. Go to the fio directory (source files).
  4. Run ``make clean && make -j``.
+ 5. If you run into errors with "$'\r': command not found" then it's the windows style file 
+ endings causing issues. From the Cygwin terminal run the following:  vi -b [offending filename]
+ once in the vi client run the following commands
+  :%s/\r$//
+  :x
+and try the make command again.
 
 To build fio for 32-bit Windows, ensure the -i686 versions of the previously
 mentioned -x86_64 packages are installed and run ``./configure
